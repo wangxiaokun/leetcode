@@ -13,7 +13,6 @@ public:
         int value = iter1->second;
         auto iter2 = std::find(deque_.begin(), deque_.end(), key);
         deque_.erase(iter2);
-        //print();
         deque_.push_back(key);
         //print();
         return value;
