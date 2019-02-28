@@ -15,7 +15,7 @@ using namespace std;
 void Log(const char* format, ...)
 {
     static unsigned int MAX_LOG_LENGTH=1024;
-    
+
     struct timeval tv;
     gettimeofday(&tv, NULL);
 
@@ -44,22 +44,22 @@ void Log(const char* format, ...)
     printf("%s\n", strLog);
 }
 
-int main()
+int hhhhh()
 {
     vector<char*> vecMem;
-    
+
     // 1s申请10M内存，申请100s,1000M
-    for (int i=0; i<100; ++i)
+    for (int i=0; i<30; ++i)
     {
         static int _10M = 10*1024*1024;
-        
+
         char* p = new char[_10M];
         vecMem.push_back(p);
-        
+
         Log(" --> %d - %d, %x", i, i*_10M, p);
         sleep(1);
     }
-    
+
     // 1s释放10M内存，释放100s,1000M
     for (char* p : vecMem)
     {
@@ -67,7 +67,18 @@ int main()
         Log(" --> delete %x", p);
         sleep(1);
     }
-    
+
     return 0;
 }
+
+int main()
+{
+    sleep(3);
+
+    hhhhh();
+
+    pause();
+    return 0;
+}
+
 

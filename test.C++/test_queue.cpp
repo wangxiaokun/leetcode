@@ -1,10 +1,18 @@
 #include <iostream>
 #include <string>
 #include <queue>
-
+#include <list>
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
+#include <sys/time.h>
+#include <string.h>
 
 using namespace std;
+
+
+
 
 void Log(const char* format, ...)
 {
@@ -40,46 +48,113 @@ void Log(const char* format, ...)
 
 
 
-int main()
+int main(int argc, char* argv[])
 {
     if (argc != 2)
     {
-        Log("Incorrect arg num:%d, must be 7.", argc-1);
+        Log("Incorrect arg num:%d, must be 1.", argc-1);
         return 0;
     }
     
-    int loop_count = argv[1];
+    int loop_count = atoi(argv[1]);
     
     
     
     
-    queue<TMsg*> queueTmp;
-    TMsg* pMsg = new TMsg();
+    //queue<int*> queueTmp;
+	list<int*> queueTmp;
+    int* pMsg = new int(888);
     
     
-    sleep(8);
+    sleep(5);
     
+	
+	Log("start, queueTmp.");
 
     for (int i=0; i<loop_count; ++i)
     {
         for (int j=0; j<10000; ++j)
         {
-            queueTmp.push(pMsg);
+            //queueTmp.push(pMsg);
+			queueTmp.push_back(pMsg);
         }
         
         sleep(1);
     }
     
+	Log("----");
     
     for (int i=0; i<loop_count; ++i)
     {
         for (int j=0; j<10000; ++j)
         {
-            queueTmp.pop(pMsg);
+            //queueTmp.pop();
+			queueTmp.pop_front();
         }
         
         sleep(1);
     }
+	
+	Log("end");
+	queueTmp.pop_front();
+	
+	
+	
+	
+	
+	
+	
+	sleep(5);
+	
+	
+	
+	
+	
+	
+	Log("start");
+
+    for (int i=0; i<loop_count; ++i)
+    {
+        for (int j=0; j<10000; ++j)
+        {
+            //queueTmp.push(pMsg);
+			queueTmp.push_back(pMsg);
+        }
+        
+        sleep(1);
+    }
+    
+	Log("----");
+    
+    for (int i=0; i<loop_count; ++i)
+    {
+        for (int j=0; j<10000; ++j)
+        {
+            //queueTmp.pop();
+			queueTmp.pop_front();
+        }
+        
+        sleep(1);
+    }
+	
+	Log("end");
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	pause();
 
 
     return 0;
