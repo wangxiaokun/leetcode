@@ -129,6 +129,10 @@ void prettyPrintTree(TreeNode* node, string prefix = "", bool isLeft = true) {
 class Solution {
 public:
     // Recursive solution is trivial, could you do it iteratively?
+    // 思考
+    // 1.递归方式，代码简洁，易懂，框架清晰
+    // 2.遍历方式，其实也是利用了递归的思想，只是需要自己处理栈，
+    // 而递归方式是利用了程序本身函数调用时就要入栈出栈
     vector<int> preorderTraversal(TreeNode* root) {
         vector<int> vec;
         
